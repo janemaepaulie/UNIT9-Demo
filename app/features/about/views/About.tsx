@@ -36,7 +36,7 @@ const Text = styled.div`
   color: #fff;
 
   margin-left: 30%;
-  margin-top: -10%;
+  margin-top: -6%;
 
   h1 {
     margin-bottom: 1.8em;
