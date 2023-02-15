@@ -44,8 +44,6 @@ export class Scroll extends EventDispatcher {
       const x = touches[0].pageX;
       const y = touches[0].pageY;
 
-      console.log(touches[0]);
-
       const deltaY = this._touch.y - y;
       this.dispatchEvent(moveEvent(-deltaY, 'touch'));
 

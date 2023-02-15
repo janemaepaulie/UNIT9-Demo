@@ -11,7 +11,7 @@ export enum AssetTypes {
 export interface Asset {
   type: AssetTypes;
   path: string;
-  item?: THREE.Group | AudioBuffer | any;
+  item?: THREE.Group | AudioBuffer | THREE.Texture | any;
 }
 
 export const SCENE_LOADED_EVENT = 'assets.sceneLoaded';
@@ -19,8 +19,8 @@ export const SCENE_LOADED_EVENT = 'assets.sceneLoaded';
 export function sceneLoadedEvent(sceneGuid: string) {
   return {
     type: SCENE_LOADED_EVENT,
-    guid: sceneGuid
-  }
+    guid: sceneGuid,
+  };
 }
 
 export class Assets extends THREE.EventDispatcher {
@@ -60,13 +60,12 @@ export class Assets extends THREE.EventDispatcher {
   public async preload(scene: Scene): Promise<Asset[]> {
     const assets = this._assetMap[scene.guid];
     const promises = assets.map(async (asset) => {
-
-      switch(asset.type) {
+      switch (asset.type) {
         case AssetTypes.FBX: {
           const group = await this._fbxLoader.loadAsync(asset.path);
           return asset.item = group;
         }
-        
+
         case AssetTypes.AUDIO: {
           const audio = await this._audioLoader.loadAsync(asset.path);
           return asset.item = audio;
