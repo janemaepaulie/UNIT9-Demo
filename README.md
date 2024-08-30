@@ -22,8 +22,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Notes 
 
-I'm very new to graphics and creative development (but not React and engineering). This was an attempt to pick up Three.js and brush up on the basics of shaders within ~six weeks, and this is what I ended up with. Here's what I would do having more time and/or knowledge:
-
 ### Things I'd improve:
 - There’s weirdness going on with the alpha channel of the particles, but I don’t know how to fix that. Adding `transparent: false` to their ShaderMaterial exposes the problem
 - Much of the BeatDetector could potentially be replaced by a call to Essentia's [OnsetDetection](https://essentia.upf.edu/reference/streaming_OnsetDetection.html) method, but is that fun? (it's easier to extend the algorithm if we have our own)
